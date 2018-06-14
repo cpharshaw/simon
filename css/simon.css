@@ -1,0 +1,227 @@
+html {
+    touch-action: manipulation;
+  }
+  
+  body {
+  /* 	background-image: url('https://photos.google.com/share/AF1QipMXrbcUivibaE933FJ2CiHBvLbtvPkN9oAp5ga-wkxDarpiuniifLZX55_7M69N_g/photo/AF1QipPUaFok6DXlchCvS2pblszTo2NDtuKNHyG4dGgE?key=NlhJR3J5ck11WFVESmIwOWxfd2hFVUg4Nk1PSnVR'); */
+      background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
+      height: 500px;;
+  }
+  
+  .all {
+      display: flex;
+      margin: 0 auto;
+      flex-wrap: nowrap;
+      align-content: center;
+      align-items: center;	
+      justify-content: center;
+  }
+  
+  
+  
+  #container {
+      display:flex;
+      margin: 0 auto;
+      flex-wrap: nowrap;
+      flex-direction: row;	
+      width: 550px;
+      height: 550px;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+  }
+  
+  
+  
+  #outerCircle {
+      background-color: #303133;
+      border: 3px solid #2b2b2b;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      position: absolute;
+  }
+  
+  
+  #middleRing {
+      background-color: #303133;
+      border: 5px solid clear;
+      width: 325px;
+      height: 325px;
+      border-radius: 50%;
+      z-index: 75;
+      position: absolute;
+  }
+  
+  #innerCircle {
+      flex-direction: column;	
+      position: absolute;
+      background-color: #ffeded;
+      border: 2px solid grey;
+      width: 275px;
+      height: 275px;
+      border-radius: 50%;
+      z-index: 100;
+  }
+  
+  .button {
+      box-shadow: 0px 0px 20px black;
+  }
+  
+  #greenBtn {
+      width: 245px; 
+      height: 245px; 
+      border-radius: 245px 0 0 0;
+      z-index: 50;
+      position: absolute;
+      background-color: #008C00;
+      margin-top: -130.5px;
+      margin-left: -130.5px;
+  }
+  
+  .greenClicked {
+      /* 	transition-duration: 0.1s; */
+      background-color: #00D900;
+  }
+  
+  .greenUnclicked {
+      transition-duration: .5s;
+      background-color: #008C00;
+  }
+  
+  #redBtn {
+      width: 245px; 
+      height: 245px; 
+      border-radius: 0 245px 0 0;
+      z-index: 50;
+      position: absolute;
+      background-color: #8C0000;	
+      margin-top: -130.5px;
+      margin-left: 130.5px;
+  }
+  
+  #yellowBtn {
+      width: 245px; 
+      height: 245px; 
+      border-radius: 0 0 0 245px;
+      z-index: 50;
+      position: absolute;
+      background-color: #8C8C00;	
+      margin-top: 130.5px;
+      margin-left: -130.5px;	
+  }
+  
+  
+  #blueBtn {
+      width: 245px; 
+      height: 245px; 
+      border-radius: 0 0 245px 0;
+      z-index: 50;
+      position: absolute;
+      background-color: #0000B2;	
+      margin-top: 130.5px;
+      margin-left: 130.5px;
+  }
+  
+  
+  #simonText {	
+      flex-direction: row;		
+      font-size: 75px;
+      font-family: Helvetica;
+      font-style: oblique;
+      margin-bottom: -20px;
+  }
+  
+  #counterStartStrictContainer {	
+      flex-direction: row;
+      align-items: flex-end !Important;
+  }
+  
+  
+  #counterContainer,#startContainer,#strictContainer {	
+      flex-direction: column;
+      padding: 10px 10px 10px 10px;
+  }
+  
+  #onOffContainer,#offText,#onOffButton,#onText {
+      flex-direction: row;
+  }
+  
+  
+  #counterDisplay {
+      background-color: #38120f;
+      border: 1px solid grey;
+      width: 60px;
+      height: 42px;
+      border-radius: 20%;
+  /* 	align-items: center; */
+  }
+  
+  #count {
+      color:red;
+      font-size: 22.5px;
+      font-family: "Courier New";
+      align-self: flex-end;
+  }
+  
+  #startButton {
+      background-color: red;
+      border: 2.5px solid grey;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+  }
+  
+  
+  #counterDisplay, #counterText, #startButton, #startText, #strictInd,#strictButton, #strictText {
+      margin-top: 2px;
+      margin-bottom: 2px;
+  }
+  
+  
+  #strictInd {
+      background-color: #38120f;
+      border: 2px solid black;
+      width: 10.5px;
+      height: 10.5px;
+      border-radius: 50%;
+  }
+  
+  
+  #strictButton {
+      background-color: yellow;
+      border: 2.5px solid grey;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+  }
+  
+  
+  #offText, #onOffButton, #onText {
+      margin-left: 4px;
+      margin-right: 4px;
+  }
+  
+  
+  #onOffButton {
+      background-color: #303133;
+      width: 50px;
+      height: 20px;
+      justify-content: flex-start ;
+  }
+  
+  
+  #onPos,#offPos {
+      background-color: #6473e5;
+      width: 19.5px;
+      height: 18.5px;
+  }
+  
+  #onPos {
+      display: none;	
+  }
+  
+  #offPos {
+      display: inline;
+  }
