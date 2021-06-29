@@ -5,7 +5,8 @@ html {
   body {
   /* 	background-image: url('https://photos.google.com/share/AF1QipMXrbcUivibaE933FJ2CiHBvLbtvPkN9oAp5ga-wkxDarpiuniifLZX55_7M69N_g/photo/AF1QipPUaFok6DXlchCvS2pblszTo2NDtuKNHyG4dGgE?key=NlhJR3J5ck11WFVESmIwOWxfd2hFVUg4Nk1PSnVR'); */
       background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
-      height: 500px;;
+      background-size: cover;
+      height: 500px;
   }
   
   .all {
