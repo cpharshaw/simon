@@ -5,7 +5,7 @@ html {
   body {
       background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
       background-size: cover;
-      /* height: 500px; */
+      background-repeat: no-repeat;
   }
   
   .all {
@@ -24,12 +24,12 @@ html {
       margin: 0 auto;
       flex-wrap: nowrap;
       flex-direction: row;	
-      width: 550px;
-      height: 550px;
+      width: 100vw;
+      height: 100vh;
       align-content: center;
       justify-content: center;
       align-items: center;
-      margin-top: 80px;
+      /* margin-top: 80px; */
   }
   
   
