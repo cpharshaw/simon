@@ -1,278 +1,230 @@
-$(document).ready(function() {
+$(document).ready(() => {
 
+	const simonGame = {
+		onOffToggle: false,
+		strictToggle: false,
+		round: 0,
+		challengeArr: [],
+		responseArr: [],
+		"speed": 750,
+		started: false,
+		loop: null,
+		redo: 0,
+		lives: 2,
+		random() {
+			const random = Math.floor(Math.random() * 4);
+			return random;
+		},
+		colorButtonPressAppearance: function (button, time, playerPressed) {
+			if (this.onOffToggle && (this.started || playerPressed)) {
+				$('#' + button.id).css({ "background-color": button.activeStyle, "duration": "1s" });
+				const audio = new Audio(button.activeSound);
+				audio.play();
+				setTimeout(() => $('#' + button.id).css({ "background-color": button.baseStyle, "duration": "1s" }), time);
+			}
+		},
+		colorButtonPressLogic(buttonID, playerPressed) {
 
-	function greenLight(time) {
-		$("#greenBtn").css({"background-color":"#00D900","duration":"1s"});
-		var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
-		audio.play();
-		setTimeout(
-			function(time) {
-				$("#greenBtn").css({"background-color":"#008C00","duration":"1s"});
-			}, time);		
+			const getButton = () => {
+				if (buttonID === "redBtn") {
+					return this.buttons.red;
+				}
+				if (buttonID === "blueBtn") {
+					return this.buttons.blue;
+				}
+				if (buttonID === "yellowBtn") {
+					return this.buttons.yellow;
+				}
+				if (buttonID === "greenBtn") {
+					return this.buttons.green;
+				}
+			};
+
+			const button = getButton();
+			const time = 250;
+
+			this.colorButtonPressAppearance(button, time, playerPressed);
+
+			if (this.started == true || this.onOffToggle == false || this.round == 0) {
+			} else {
+				this.responseArr.push(button.num);
+			};
+
+			if (this.started == true || this.onOffToggle == false || this.round == 0) {
+			} else if (this.challengeArr[this.responseArr.length - 1] == this.responseArr[this.responseArr.length - 1]) {
+				if (this.challengeArr.length == this.responseArr.length) {
+					this.responseArr = [];
+					$("#count").text("👍");
+					setTimeout((self => self.game())(this), 1500);
+				}
+			} else {
+				this.responseArr = [];
+				if (this.strictToggle == true || this.lives == 0) {
+					$("#count").text("!!");
+					this.reset();
+					setTimeout(() => alert('YOU LOSE'), this.speed * .5);
+				} else {
+					$("#count").text("!!");
+					setTimeout(() => this.game(), 1500);
+					setTimeout(() => alert('WRONG - ' + (this.lives + 1) + " lives left..."), this.speed * .5);
+					this.redo = 1;
+					this.round--;
+					this.lives--;
+				}
+			}
+		},
+		buttons: {
+			red: {
+				id: "redBtn",
+				baseStyle: "#8C0000",
+				activeStyle: "#D90000",
+				activeSound: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
+				num: 0
+			},
+			blue: {
+				id: "blueBtn",
+				baseStyle: "#0000B2",
+				activeStyle: "#1E90FF",
+				activeSound: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3',
+				num: 1
+			},
+			yellow: {
+				id: "yellowBtn",
+				baseStyle: "#8C8C00",
+				activeStyle: "#D9D900",
+				activeSound: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
+				num: 2
+			},
+			green: {
+				id: "greenBtn",
+				baseStyle: "#008C00",
+				activeStyle: "#00D900",
+				activeSound: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
+				num: 3
+			},
+		},
+		startButtonPress() {
+			if (this.onOffToggle && !this.started) {
+				$("#startButton").css("border", "5.5px solid grey");
+				setTimeout(() => $("#startButton").css("border", "2.5px solid grey"), 135);
+				this.started = true;
+				this.game();
+			}
+		},
+		strictButtonPress() {
+			const toggleStrict = () => {
+				$("#strictButton").css("border", "5.5px solid grey");
+				setTimeout(() => $("#strictButton").css("border", "2.5px solid grey"), 135);
+			}
+			if (this.onOffToggle) {
+				if (this.strictToggle) {
+					toggleStrict();
+					$("#strictInd").css("background-color", "#38120f");
+					this.strictToggle = false;
+				} else {
+					toggleStrict();
+					$("#strictInd").css("background-color", "red");
+					this.strictToggle = true;
+				}
+			}
+		},
+		reset() {
+			this.strictToggle = false;
+			this.round = 0;
+			this.challengeArr = [];
+			this.responseArr = [];
+			this.speed = null;
+			this.started = false;
+			this.loop = null;
+			this.redo = 0;
+			this.lives = 2;
+			$("#count").text("--");
+			$("#strictInd").css("background-color", "#38120f");
+		},
+		onOffButtonPress() {
+			if (!this.onOffToggle) {
+				this.onOffToggle = true;
+				$("#onOffButton").css("justify-content", "flex-end");
+				$("#onPos").css("display", "inline");
+				$("#offPos").css("display", "none");
+				this.reset();
+				$("#count").text("--");
+			} else {
+				this.onOffToggle = false;
+				$("#onOffButton").css("justify-content", "flex-start");
+				$("#onPos").css("display", "inline");
+				$("#offPos").css("display", "none");
+				this.reset();
+				$("#count").text("");
+			}
+		},
+		playChallengeArr() {
+			let i = 0;
+			const loop = setInterval(
+				() => {
+					if (i < this.challengeArr.length) {
+						if (this.challengeArr[i] == 0) {
+							this.colorButtonPressAppearance(this.buttons.red, 300, false);
+						} else if (this.challengeArr[i] == 1) {
+							this.colorButtonPressAppearance(this.buttons.blue, 300, false);
+						} else if (this.challengeArr[i] == 2) {
+							this.colorButtonPressAppearance(this.buttons.yellow, 300, false);
+						} else if (this.challengeArr[i] == 3) {
+							this.colorButtonPressAppearance(this.buttons.green, 300, false);
+						}
+						i++;
+					} else {
+						clearInterval(loop);
+						this.started = false;
+						this.redo = 0;
+					}
+				},
+				this.speed
+			);
+		},
+		game() {
+			if (this.round > 19) alert("Congratulations!  You win!  Now take a hike.");
+			this.started = true;
+			this.round++;
+
+			$("#count").text(this.round);
+
+			if (this.round == 5) {
+				this.speed = 600;
+			} else if (this.round == 9) {
+				this.speed = 500;
+			} else if (this.round == 13) {
+				this.speed = 400;
+			} else {
+				this.speed = 750;
+			};
+
+			if (this.redo == 0) {
+				this.challengeArr.push(this.random());
+			};
+
+			this.playChallengeArr();
+
+		}
+
 	}
 
 
-	function redLight(time) {
-		$("#redBtn").css({"background-color":"#D90000","duration":"1s"});
-		var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
-		audio.play();		
-		setTimeout(
-			function(time) {
-				$("#redBtn").css({"background-color":"#8C0000","duration":"1s"});
-			}, time);
-	};
-
-
-	function yellowLight(time) {
-		$("#yellowBtn").css({"background-color":"#D9D900","duration":"1s"});
-		var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
-		audio.play();		
-		setTimeout(
-			function(time) {
-				$("#yellowBtn").css({"background-color":"#8C8C00","duration":"1s"});
-			}, time);
-	};
-
-
-	function blueLight(time) {
-		$("#blueBtn").css({"background-color":"#1E90FF","duration":"1s"});
-		var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
-		audio.play();		
-		setTimeout(
-			function(time) {
-				$("#blueBtn").css({"background-color":"#0000B2","duration":"1s"});
-			}, time);
-	};	
-
-
-	$("#greenBtn").click(function() {
-		if (started == 0) {
-			greenLight(300);
-		}
-
+	$(".button").on("click", function () {
+		const val = $(this).data("val");
+		simonGame.colorButtonPressLogic(val, true);
 	});
 
-	$("#redBtn").click(function() {
-		if (started == 0) {
-			redLight(300);
-		}
+	$("#startButton").on("click", function () {
+		return simonGame.startButtonPress();
 	});
 
-	$("#yellowBtn").click(function() {
-		if (started == 0) {
-			yellowLight(300);
-		}
+	$("#strictButton").on("click", function () {
+		return simonGame.strictButtonPress();
 	});
 
-	$("#blueBtn").click(function() {
-		if (started == 0) {
-			blueLight(300);
-		}		
+	$("#onOffButton").on("click", function () {
+		return simonGame.onOffButtonPress();
 	});
-
-
-	$("#startButton").click(function() {
-		$("#startButton").css("border", "5.5px solid grey")
-		setTimeout(
-			function() {
-				$("#startButton").css("border", "2.5px solid grey")
-			}, 135);
-	});
-
-	$("#strictButton").click(function() {
-		$("#strictButton").css("border", "5.5px solid grey")
-		setTimeout(
-			function() {
-				$("#strictButton").css("border", "2.5px solid grey")
-			}, 135);
-	});		
-
-
-
-
-	var strictToggle = 0;
-	var onOffToggle = 0;
-
-
-
-	$("#strictButton").click(function() {
-		if (onOffToggle == 0) {
-			return;
-		} else {
-			if (strictToggle == 0) {
-				strictToggle = 1;
-				$("#strictInd").css("background-color", "red");			
-			} else {
-				strictToggle = 0;
-				$("#strictInd").css("background-color", "#38120f");
-			}	
-		}
-	});
-
-
-	$("#onOffButton").click(function() {
-		if (onOffToggle == 0) {
-			onOffToggle = 1;
-			$("#onOffButton").css("justify-content", "flex-end");
-			$("#onPos").css("display", "inline");
-			$("#offPos").css("display", "none");
-			reset();
-			$("#count").text("--");
-		} else {
-			onOffToggle = 0;
-			$("#onOffButton").css("justify-content", "flex-start");
-			$("#onPos").css("display", "inline");
-			$("#offPos").css("display", "none");
-			reset();
-			$("#count").text("");			
-		}				
-	});
-
-
-
-	function countdown() {
-		setTimeout(function() {
-			return true;
-		},5000);
-	};
-
-
-	function reset() {
-		challengeArr = [];
-		responseArr = [];
-		started = 0;
-		round = 0;
-		redo = 0;
-		strictToggle = 0;
-		$("#count").text("--");	
-		$("#strictInd").css("background-color", "#38120f");
-	};
-
-
-	function random() {
-		var number = 0;
-		number = Math.floor(Math.random() * 4);
-		return number;
-	};
-
-	var round = 0;
-	var challengeArr = [];
-	var responseArr = [];
-	var speed;
-	var started = 0;
-	var loop;
-	var redo = 0;
-
-
-	function simon() {
-
-		if (round > 19) {
-			alert("You win!");
-			return;
-		} else {
-			started = 1;
-			round++;
-			$("#count").text(round);
-
-			if (round == 5) {
-				speed = 600;
-			} else if (round == 9) {
-				speed = 500;
-			} else if (round == 13) {
-				speed = 400;
-			} else {
-				speed = 750;
-			}; 
-
-			if (redo == 0) {
-				challengeArr.push(random());
-			}
-
-			var i = 0; 
-
-			loop = setInterval(function(speed) {
-
-				if (i < challengeArr.length) {
-
-					if (challengeArr[i] == 0) {
-						greenLight(300);
-					} else if (challengeArr[i] == 1) {
-						redLight(300);
-					} else if (challengeArr[i] == 2) {
-						yellowLight(300);
-					} else if (challengeArr[i] == 3) {
-						blueLight(300);
-					} else {
-						return;
-					}
-					i++;
-				} else {
-					clearInterval(loop);
-					started = 0;
-					redo = 0;
-				}
-			},speed);
-		};
-
-	};
-
-
-	$(".button").click(function() {
-
-		if (started == 1 || onOffToggle == 0 || round == 0) {
-		} else {
-			if ($(this).is("#greenBtn")) {
-				responseArr.push(0);
-			} else if ($(this).is("#redBtn")) {
-				responseArr.push(1);
-			} else if ($(this).is("#yellowBtn")) {
-				responseArr.push(2);
-			} else if ($(this).is("#blueBtn")) {
-				responseArr.push(3);
-			}
-		};
-
-		if (started == 1 || onOffToggle == 0 || round == 0) {
-		} else if (challengeArr[responseArr.length-1] == responseArr[responseArr.length-1]) {
-			if (challengeArr.length == responseArr.length) {
-				responseArr = [];
-				$("#count").text("👍");
-				setTimeout(function() {simon()},1500);
-			}
-		} else {
-			responseArr = [];
-			if (strictToggle == 1) {
-				$("#count").text("!!");
-				reset();				
-				setTimeout(function() {alert('YOU LOSE')},speed * .5);
-			} else {
-				$("#count").text("!!");	
-				setTimeout(function() {simon()},1500);				
-				setTimeout(function() {alert('WRONG')},speed * .5);
-				redo = 1;
-				round--;
-			}
-		}
-	});
-
-
-
-	$("#startButton").click(function() {
-		if (onOffToggle == 0) {
-		} else if (started == 1 || challengeArr.length != 0 || responseArr.length != 0) {				  
-		} else {
-			started = 1;
-			simon(); 
-		}
-	});
-
-
-
-
-
-
-
-
-
 
 });

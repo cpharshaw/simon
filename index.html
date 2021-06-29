@@ -7,18 +7,19 @@
 <html>
 
 <head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-		<link rel="stylesheet" type="text/css" href="css/simon.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/simon.css">
 
 
-		<script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/simon.js"></script>
+	<script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+	 crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/simon.js"></script>
 	<title>
 		Simon Game - brought to you by Craig Harshaw
 	</title>
@@ -26,45 +27,49 @@
 
 <body>
 
-	<div id="container" class="all">
+	<div id="container" class="">
 
-		<div id="greenBtn" class="button"></div>
-		<div id="redBtn" class="button"></div>
-		<div id="yellowBtn" class="button"></div>
-		<div id="blueBtn" class="button"></div>
-		
-		<div id="middleRing" class=""></div>
-	
 		<div id="outerCircle" class="all">
-	
-	
+
+			<div id="buttonOuterCircle" class=""></div>
+
+			<div id="buttonCrossbarX" class=""></div>
+			<div id="buttonCrossbarY" class=""></div>
+
+			<div id="greenBtn" data-val="greenBtn" class="button"></div>
+			<div id="redBtn" data-val="redBtn" class="button"></div>
+			<div id="yellowBtn" data-val="yellowBtn" class="button"></div>
+			<div id="blueBtn" data-val="blueBtn" class="button"></div>
+
+			<div id="middleRing" class=""></div>
+
 			<div id="innerCircle" class="all">
-	
+
 				<p id="simonText" class="">Simon</p>
-	
+
 				<div id="counterStartStrictContainer" class="all">
-	
+
 					<div id="counterContainer" class="all">
 						<div id="counterDisplay" class="all">
 							<p id="count" class="all"></p>
 						</div>
 						<p id="counterText" class="all">COUNT</p>
 					</div>
-	
+
 					<div id="startContainer" class="all">
 						<div id="startButton" class="all"></div>
 						<p id="startText" class="all">START</p>
 					</div>
-	
+
 					<div id="strictContainer" class="all">
 						<div id="strictInd" class="all"></div>
 						<div id="strictButton" class="all"></div>
 						<p id="strictText" class="all">STRICT</p>
 					</div>
-	
+
 				</div>
-	
-	
+
+
 				<div id="onOffContainer" class="all">
 					<p id="offText" class="all">OFF</p>
 					<div id="onOffButton" class="all">
@@ -73,7 +78,7 @@
 					</div>
 					<p id="onText" class="all">ON</p>
 				</div>
-	
+
 			</div>
 		</div>
 	</div>
@@ -82,4 +87,3 @@
 
 
 </html>
-

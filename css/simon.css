@@ -41,18 +41,17 @@ html {
       height: 550px;
       border-radius: 50%;
       position: absolute;
-  }
+    }
   
   
   #middleRing {
       background-color: #303133;
-      border: 5px solid clear;
-      width: 325px;
-      height: 325px;
+      width: 310px;
+      height: 310px;
       border-radius: 50%;
       z-index: 75;
       position: absolute;
-  }
+    }
   
   #innerCircle {
       flex-direction: column;	
@@ -63,26 +62,57 @@ html {
       height: 275px;
       border-radius: 50%;
       z-index: 100;
+    }
+
+  #buttonOuterCircle {
+    flex-direction: column;	
+    position: absolute;
+    background-color: transparent;
+    border: 19px solid #303133;
+    width: 556px;
+    height: 556px;
+    border-radius: 50%;
+    z-index: 101;    
+    pointer-events: none;
   }
   
+  #buttonCrossbarX {
+    flex-direction: column;	
+    position: absolute;
+    background-color: #303133;
+    width: 545px;
+    height: 17.5px;
+    z-index: 100;
+  }
+
+  #buttonCrossbarY {
+    flex-direction: column;	
+    position: absolute;
+    background-color: #303133;
+    width: 17.5px;
+    height: 545px;
+    z-index: 100;
+  }
+
   .button {
-      box-shadow: 0px 0px 20px black;
+    /*   */
+    width: 275px; 
+    height: 275px;
+    z-index: 50;
+    position: absolute;
   }
   
   #greenBtn {
-      width: 245px; 
-      height: 245px; 
-      border-radius: 245px 0 0 0;
-      z-index: 50;
-      position: absolute;
-      background-color: #008C00;
-      margin-top: -130.5px;
-      margin-left: -130.5px;
+    border-radius: 275px 0 0 0;
+    background-color: #008C00;
+    margin-top: -275px;
+    margin-left: -275px;
+    
   }
   
   .greenClicked {
-      /* 	transition-duration: 0.1s; */
-      background-color: #00D900;
+    transition-duration: 0.1s;
+    background-color: #00D900;
   }
   
   .greenUnclicked {
@@ -91,37 +121,25 @@ html {
   }
   
   #redBtn {
-      width: 245px; 
-      height: 245px; 
-      border-radius: 0 245px 0 0;
-      z-index: 50;
-      position: absolute;
+      border-radius: 0 275px 0 0;
       background-color: #8C0000;	
-      margin-top: -130.5px;
-      margin-left: 130.5px;
+      margin-top: -275px;
+      margin-left: 275px;
   }
   
   #yellowBtn {
-      width: 245px; 
-      height: 245px; 
-      border-radius: 0 0 0 245px;
-      z-index: 50;
-      position: absolute;
+      border-radius: 0 0 0 275px;
       background-color: #8C8C00;	
-      margin-top: 130.5px;
-      margin-left: -130.5px;	
+      margin-top: 275px;
+      margin-left: -275px;	
   }
   
   
   #blueBtn {
-      width: 245px; 
-      height: 245px; 
-      border-radius: 0 0 245px 0;
-      z-index: 50;
-      position: absolute;
+      border-radius: 0 0 275px 0;
       background-color: #0000B2;	
-      margin-top: 130.5px;
-      margin-left: 130.5px;
+      margin-top: 275px;
+      margin-left: 275px;
   }
   
   
@@ -135,7 +153,7 @@ html {
   
   #counterStartStrictContainer {	
       flex-direction: row;
-      align-items: flex-end !Important;
+      align-items: flex-end !important;
   }
   
   
