@@ -1,12 +1,21 @@
+
 html {
     touch-action: manipulation;
+    height: 100%;
+    width: 100%;
   }
   
   body {
-      background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
+    background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
+    background-size: 2000px 2000px;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    margin-top: 85px;
+    overflow: hidden;
   }
+
+
   
   .all {
       display: flex;
@@ -18,29 +27,13 @@ html {
   }
   
   
-  
-  #container {
-      display:flex;
-      margin: 0 auto;
-      flex-wrap: nowrap;
-      flex-direction: row;	
-      width: 100vw;
-      height: 100vh;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-      /* margin-top: 80px; */
-  }
-  
-  
-  
   #outerCircle {
       background-color: #303133;
       border: 3px solid #2b2b2b;
       width: 550px;
       height: 550px;
       border-radius: 50%;
-      position: absolute;
+      /* position: absolute; */
     }
   
   
