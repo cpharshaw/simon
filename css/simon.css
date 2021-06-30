@@ -1,19 +1,17 @@
 
-html {
-    touch-action: manipulation;
+body, html {
     height: 100%;
-    width: 100%;
-  }
-  
+    margin: 0;
+    padding: 0;
+    min-width: 400px;
+}
+
   body {
     background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
     background-size: cover;
     background-repeat: repeat-y;
-    height: 100%;
-    width: 100%;
     overflow: hidden;
   }
-
 
   
   .all {
