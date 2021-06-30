@@ -19,6 +19,7 @@ body {
     background-repeat: repeat-y;    
     overflow: hidden;
     display: block;
+    padding-top: 85px;
 }
 
 * {
