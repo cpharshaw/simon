@@ -8,7 +8,7 @@ html {
   body {
     background-image: url('https://wallpapercave.com/wp/ARBuPnm.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -33,7 +33,6 @@ html {
       height: 550px;
       border-radius: 50%;
       margin-top: 85px;
-      /* position: absolute; */
     }
   
   
