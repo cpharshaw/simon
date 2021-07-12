@@ -29,15 +29,22 @@ body {
 }
   
 .all {
-    display: flex;
     margin: 0 auto;
-    flex-wrap: nowrap;
-    align-content: center;
-    align-items: center;	
-    justify-content: center;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	-moz-flex-flow: row nowrap;
+	flex-flow: row nowrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-align-content: center;
+	align-content: center;    
 }
-  
-  
+
 #outerCircle {
     background-color: #303133;
     border: 3px solid #2b2b2b;
@@ -57,7 +64,9 @@ body {
 }
   
   #innerCircle {
-      flex-direction: column;	
+      -webkit-flex-flow: column nowrap;
+      -moz-flex-flow: column nowrap;
+      flex-flow: column nowrap;      
       position: absolute;
       background-color: #ffeded;
       border: 2px solid grey;
@@ -68,7 +77,10 @@ body {
     }
 
   #buttonOuterCircle {
-    flex-direction: column;	
+    -webkit-flex-flow: column nowrap;
+	-moz-flex-flow: column nowrap;
+	flex-flow: column nowrap;
+
     position: absolute;
     background-color: transparent;
     border: 19px solid #303133;
@@ -80,7 +92,9 @@ body {
   }
   
   #buttonCrossbarX {
-    flex-direction: column;	
+    -webkit-flex-flow: column nowrap;
+	-moz-flex-flow: column nowrap;
+	flex-flow: column nowrap;
     position: absolute;
     background-color: #303133;
     width: 545px;
@@ -89,7 +103,9 @@ body {
   }
 
   #buttonCrossbarY {
-    flex-direction: column;	
+    -webkit-flex-flow: column nowrap;
+	-moz-flex-flow: column nowrap;
+	flex-flow: column nowrap;
     position: absolute;
     background-color: #303133;
     width: 17.5px;
@@ -98,19 +114,24 @@ body {
   }
 
   .button {
-    /*   */
     width: 275px; 
     height: 275px;
     z-index: 50;
-    position: absolute;
+    position: absolute !important;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
   }
   
   #greenBtn {
     border-radius: 275px 0 0 0;
     background-color: #008C00;
-    margin-top: -275px;
-    margin-left: -275px;
-    
+    /* margin-top: -275px;
+    margin-left: -275px; */
+    transform: translate(-50%,-50%);
+
+    /* top: 100px;
+    left: 450px;     */
   }
   
   .greenClicked {
@@ -126,28 +147,33 @@ body {
   #redBtn {
       border-radius: 0 275px 0 0;
       background-color: #8C0000;	
-      margin-top: -275px;
-      margin-left: 275px;
+      /* margin-top: -275px;
+      margin-left: 275px; */
+      transform: translate(50%,-50%);
   }
   
   #yellowBtn {
       border-radius: 0 0 0 275px;
       background-color: #8C8C00;	
-      margin-top: 275px;
-      margin-left: -275px;	
+      /* margin-top: 275px;
+      margin-left: -275px;	 */
+      transform: translate(-50%,50%);
   }
   
   
   #blueBtn {
       border-radius: 0 0 275px 0;
       background-color: #0000B2;	
-      margin-top: 275px;
-      margin-left: 275px;
+      /* margin-top: 275px;
+      margin-left: 275px; */
+      transform: translate(50%,50%);
   }
   
   
   #simonText {	
-      flex-direction: row;		
+    -webkit-flex-flow: row nowrap;
+	-moz-flex-flow: row nowrap;
+	flex-flow: row nowrap;	
       font-size: 75px;
       font-family: Helvetica;
       font-style: oblique;
@@ -155,18 +181,25 @@ body {
   }
   
   #counterStartStrictContainer {	
-      flex-direction: row;
-      align-items: flex-end !important;
+    -webkit-flex-flow: row nowrap;
+	-moz-flex-flow: row nowrap;
+	flex-flow: row nowrap;	
+      -webkit-align-items: flex-end !important;
+      align-items:flex-end !important;    
   }
   
   
   #counterContainer,#startContainer,#strictContainer {	
-      flex-direction: column;
+    -webkit-flex-flow: column nowrap;
+	-moz-flex-flow: column nowrap;
+	flex-flow: column nowrap;	
       padding: 10px 10px 10px 10px;
   }
   
   #onOffContainer,#offText,#onOffButton,#onText {
-      flex-direction: row;
+    -webkit-flex-flow: row nowrap;
+	-moz-flex-flow: row nowrap;
+	flex-flow: row nowrap;	
   }
   
   
